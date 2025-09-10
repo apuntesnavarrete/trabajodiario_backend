@@ -1,9 +1,11 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors'); // <- IMPORTANTE
 const app = express();
 
-app.use(express.json()); // <- MUY IMPORTANTE para que req.body funcione
+app.use(express.json()); // <- para poder usar req.body
+app.use(cors({ origin: '*' })); // <- permite peticiones desde cualquier origen
 
 const FILE_PATH = path.join(__dirname, 'partidos.json');
 
@@ -13,7 +15,7 @@ app.get('/pro/partidos.json', (req, res) => {
 
 app.post('/pro/partidos.json', (req, res) => {
   const nuevosDatos = req.body;
-  console.log(nuevosDatos)
+  console.log(nuevosDatos);
   fs.readFile(FILE_PATH, 'utf8', (err, data) => {
     let jsonExistente = {};
     if (!err) {
