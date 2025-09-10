@@ -8,6 +8,7 @@ app.use(express.json()); // <- para poder usar req.body
 app.use(cors({ origin: '*' })); // <- permite peticiones desde cualquier origen
 
 const FILE_PATH = path.join(__dirname, 'partidos.json');
+const FILE_PLANTELES = path.join(__dirname, 'planteles.json'); // <- nuevo archivo
 
 app.get('/pro/partidos.json', (req, res) => {
   res.sendFile(FILE_PATH);
@@ -30,6 +31,10 @@ app.post('/pro/partidos.json', (req, res) => {
       res.json({ ok: true, message: 'Datos guardados correctamente' });
     });
   });
+});
+
+app.get('/pro/planteles.json', (req, res) => {
+  res.sendFile(FILE_PLANTELES);
 });
 
 app.listen(3004, () => console.log('Servidor Node corriendo en puerto 3004'));
