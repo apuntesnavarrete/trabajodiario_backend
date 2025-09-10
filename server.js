@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json()); // <- MUY IMPORTANTE para que req.body funcione
 
-const FILE_PATH = path.join(__dirname, 'pro/partidos.json');
+const FILE_PATH = path.join(__dirname, 'partidos.json');
 
 app.get('/pro/partidos.json', (req, res) => {
   res.sendFile(FILE_PATH);
