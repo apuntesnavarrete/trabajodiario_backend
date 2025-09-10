@@ -1,20 +1,30 @@
 {
   "jueves": [
     {
-      "equipo1": "Real Madrid",
-      "equipo2": "Barcelona",
-      "desempate": "L",
-      "editando": false,
-      "g1": 1,
-      "g2": 1
-    },
-    {
-      "equipo1": "Atlético Madrid",
-      "equipo2": "Sevilla",
+      "equipo1": "f6",
+      "equipo2": "Real_Elite",
       "desempate": "",
       "editando": false,
-      "g1": 3,
-      "g2": 1
+      "g1": 4,
+      "g2": 3
+    },
+    {
+      "equipo1": "Uruguay",
+      "equipo2": "Fresas FC",
+      "desempate": "",
+      "editando": false
+    },
+    {
+      "equipo1": "Aguilas",
+      "equipo2": "Fresas FC",
+      "desempate": "",
+      "editando": false
+    },
+    {
+      "equipos1": "Rayados",
+      "equipo2": "Aztecas",
+      "desempate": "",
+      "editando": false
     }
   ],
   "viernes": [
