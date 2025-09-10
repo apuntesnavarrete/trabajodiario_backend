@@ -1,0 +1,10 @@
+{
+  "jueves": [
+    { "equipo1": "Real Madrid", "equipo2": "Barcelona" },
+    { "equipo1": "Atlético Madrid", "equipo2": "Sevilla" }
+  ],
+  "viernes": [
+    { "equipo1": "Liverpool", "equipo2": "Manchester United" },
+    { "equipo1": "Chelsea", "equipo2": "Arsenal" }
+  ]
+}

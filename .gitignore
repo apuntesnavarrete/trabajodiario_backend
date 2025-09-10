@@ -1,0 +1,16 @@
+ Node modules
+node_modules/
+
+# Logs
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Entorno local
+.env
+
+# Carpeta de builds o dist si existiera
+dist/
+build/
