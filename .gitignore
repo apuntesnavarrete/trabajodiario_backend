@@ -14,3 +14,4 @@ Thumbs.db
 # Carpeta de builds o dist si existiera
 dist/
 build/
+partidos.json
