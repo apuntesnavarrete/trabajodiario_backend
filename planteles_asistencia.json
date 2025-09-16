@@ -1,0 +1,26 @@
+[
+  {
+    "teamId": 801,
+    "teamName": "Real_Elite",
+    "participantId": 956,
+    "name": "Marco Antonio Martinez Larios",
+    "asistencia": true,
+    "goles": 1
+  },
+  {
+    "teamId": 801,
+    "teamName": "Real_Elite",
+    "participantId": 1256,
+    "name": "Abraham prince cano",
+    "asistencia": true,
+    "goles": 0
+  },
+  {
+    "teamId": 801,
+    "teamName": "Real_Elite",
+    "participantId": 1307,
+    "name": "Jael Alejandre Pineda ",
+    "asistencia": true,
+    "goles": 0
+  }
+]
