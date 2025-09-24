@@ -11,6 +11,8 @@ app.use(cors({ origin: '*' })); // permite peticiones desde cualquier origen
 
 // ---------- Rutas de archivos ----------
 const FILE_PATH = path.join(__dirname, 'partidos.json');
+const FILE_PATH_ED = path.join(__dirname, 'partidos_ed.json');
+
 const FILE_PLANTELES = path.join(__dirname, 'planteles.json');
 const FILE_ASISTENCIA = path.join(__dirname, 'planteles_asistencia.json');
 
@@ -54,6 +56,10 @@ app.get('/pro/partidos.json', (req, res) => {
   res.sendFile(FILE_PATH);
 });
 
+app.get('/ed/partidos.json', (req, res) => {
+  res.sendFile(FILE_PATH_ED);
+});
+
 app.post('/pro/partidos.json', (req, res) => {
   const nuevosDatos = req.body;
   console.log('[POST /partidos]', nuevosDatos);
@@ -85,6 +91,8 @@ app.post('/pro/partidos.json', (req, res) => {
 app.get('/pro/planteles.json', (req, res) => {
   res.sendFile(FILE_PLANTELES);
 });
+
+
 
 // ---- Asistencias ----
 app.get('/pro/planteles_asistencia.json', (req, res) => {
