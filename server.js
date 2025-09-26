@@ -61,29 +61,16 @@ app.get('/ed/partidos.json', (req, res) => {
 });
 
 app.post('/pro/partidos.json', (req, res) => {
-  const nuevosDatos = req.body;
+  const nuevosDatos = req.body; // ahora es un array de partidos
   console.log('[POST /partidos]', nuevosDatos);
 
-  fs.readFile(FILE_PATH, 'utf8', (err, data) => {
-    let jsonExistente = {};
-    if (!err && data) {
-      try {
-        jsonExistente = JSON.parse(data);
-      } catch (e) {
-        console.error('Error al parsear partidos.json:', e);
-      }
+  // Sobrescribimos directamente el archivo con el array plano
+  fs.writeFile(FILE_PATH, JSON.stringify(nuevosDatos, null, 2), err => {
+    if (err) {
+      console.error('Error al guardar partidos.json:', err);
+      return res.status(500).json({ error: 'No se pudo guardar JSON' });
     }
-
-    const dia = nuevosDatos.dia;
-    const trabajosDia = nuevosDatos.trabajos || [];
-    jsonExistente[dia] = trabajosDia;
-
-    fs.writeFile(FILE_PATH, JSON.stringify(jsonExistente, null, 2), err2 => {
-      if (err2) {
-        return res.status(500).json({ error: 'No se pudo guardar JSON' });
-      }
-      res.json({ ok: true, message: 'Datos guardados correctamente' });
-    });
+    res.json({ ok: true, message: 'Datos guardados correctamente' });
   });
 });
 
