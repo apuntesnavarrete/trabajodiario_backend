@@ -47,8 +47,7 @@ async function mergeData(file, nuevos, keyFn) {
 
 // ---------- Clave única para asistencias/goles ----------
 const keyByPlayer = o =>
-  `${String(o.teamId ?? '').trim()}-${String(o.participantId ?? '').trim()}`;
-
+  `${String(o.teamId ?? '').trim()}-${String(o.participantId ?? '').trim()}-${String(o.partidoId ?? '').trim()}`;
 // ---------- Endpoints ----------
 
 // ---- Partidos ----
