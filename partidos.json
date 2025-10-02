@@ -1,48 +1,85 @@
-{
-  "jueves": [
-    {
-      "equipo1": "f6",
-      "equipo2": "Real_Elite",
-      "desempate": "",
-      "editando": false,
-      "g1": 4,
-      "g2": 3
-    },
-    {
-      "equipo1": "Uruguay",
-      "equipo2": "Fresas FC",
-      "desempate": "",
-      "editando": false
-    },
-    {
-      "equipo1": "Aguilas",
-      "equipo2": "Fresas FC",
-      "desempate": "",
-      "editando": false
-    },
-    {
-      "equipos1": "Rayados",
-      "equipo2": "Aztecas",
-      "desempate": "",
-      "editando": false
-    }
-  ],
-  "viernes": [
-    {
-      "equipo1": "Puebla",
-      "equipo2": "Manchester United",
-      "desempate": "",
-      "editando": false,
-      "g1": 2,
-      "g2": 1
-    },
-    {
-      "equipo1": "Chelsea",
-      "equipo2": "Arsenal",
-      "desempate": "",
-      "editando": false,
-      "g1": 2,
-      "g2": 3
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "equipo1": "F6",
+    "equipo2": "Fresas_FC",
+    "desempate": "",
+    "editando": false,
+    "dia": "miercoles",
+    "torneoId": "42",
+    "g1": 2,
+    "g2": 1
+  },
+  {
+    "id": 2,
+    "equipo1": "HeroesFB",
+    "equipo2": "Fresas_FC",
+    "desempate": "",
+    "editando": false,
+    "dia": "miercoles",
+    "torneoId": "43"
+  },
+  {
+    "id": 3,
+    "equipo1": "Aguilas",
+    "equipo2": "Aztecas_edl",
+    "desempate": "",
+    "editando": false,
+    "dia": "miercoles",
+    "torneoId": "43"
+  },
+  {
+    "id": 1,
+    "equipo1": "HeroesFB",
+    "equipo2": "Rayados",
+    "desempate": "",
+    "editando": false,
+    "dia": "miercoles",
+    "torneoId": 43
+  },
+  {
+    "id": 4,
+    "equipo1": "F6",
+    "equipo2": "AntiFB",
+    "desempate": "",
+    "editando": false,
+    "dia": "miercoles",
+    "torneoId": 43
+  },
+  {
+    "id": 5,
+    "equipo1": "Mininos_FC.",
+    "equipo2": "Italia",
+    "desempate": "",
+    "editando": false,
+    "dia": "miercoles",
+    "torneoId": 43
+  },
+  {
+    "id": 6,
+    "equipo1": "Italia",
+    "equipo2": "Sayans",
+    "desempate": "",
+    "editando": false,
+    "dia": "miercoles",
+    "torneoId": 43
+  },
+  {
+    "id": 7,
+    "equipo1": "Fresas_FC",
+    "equipo2": "Manchester city",
+    "desempate": "",
+    "editando": false,
+    "dia": "miercoles",
+    "torneoId": 43
+  },
+  {
+    "id": 8,
+    "equipo1": "Italia",
+    "equipo2": "Sayans",
+    "desempate": "",
+    "editando": false,
+    "dia": "viernes",
+    "torneoId": "39"
+  }
+]

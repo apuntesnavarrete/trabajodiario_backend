@@ -51,7 +51,7 @@ const keyByPlayer = o =>
 // ---------- Endpoints ----------
 
 // ---- Partidos ----
-app.get('/pro/partidos.json', (req, res) => {
+app.get('/partidos', (req, res) => {
   res.sendFile(FILE_PATH);
 });
 
@@ -59,17 +59,105 @@ app.get('/ed/partidos.json', (req, res) => {
   res.sendFile(FILE_PATH_ED);
 });
 
-app.post('/pro/partidos.json', (req, res) => {
-  const nuevosDatos = req.body; // ahora es un array de partidos
-  console.log('[POST /partidos]', nuevosDatos);
+app.post('/partidos', (req, res) => {
+  const datos = req.body; // puede ser 1 partido o un array
+  console.log('[POST /partidos] Recibido:', datos);
 
-  // Sobrescribimos directamente el archivo con el array plano
-  fs.writeFile(FILE_PATH, JSON.stringify(nuevosDatos, null, 2), err => {
+  // 1. Leer archivo actual
+  fs.readFile(FILE_PATH, 'utf8', (err, data) => {
     if (err) {
-      console.error('Error al guardar partidos.json:', err);
-      return res.status(500).json({ error: 'No se pudo guardar JSON' });
+      console.error('Error al leer partidos.json:', err);
+      return res.status(500).json({ error: 'No se pudo leer JSON' });
     }
-    res.json({ ok: true, message: 'Datos guardados correctamente' });
+
+    let partidos = [];
+    if (data) {
+      try {
+        partidos = JSON.parse(data);
+      } catch {
+        partidos = [];
+      }
+    }
+
+    // 2. Normalizar los datos recibidos (array u objeto)
+    let nuevos = Array.isArray(datos) ? datos : [datos];
+
+    // 3. Calcular IDs únicos
+    let maxId = partidos.length > 0 ? Math.max(...partidos.map(p => p.id || 0)) : 0;
+
+    // 4. Asignar un ID nuevo a cada partido, ignorando el que venga del frontend
+    nuevos = nuevos.map(p => ({
+      ...p,
+      id: ++maxId, // incrementa y asigna
+    }));
+
+    // 5. Agregar al array principal
+    partidos.push(...nuevos);
+
+    // 6. Guardar archivo
+    fs.writeFile(FILE_PATH, JSON.stringify(partidos, null, 2), err => {
+      if (err) {
+        console.error('Error al guardar partidos.json:', err);
+        return res.status(500).json({ error: 'No se pudo guardar JSON' });
+      }
+      res.json({ ok: true, message: 'Partido(s) agregado(s) correctamente', nuevos });
+    });
+  });
+});
+
+
+
+
+app.put('/partidos/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const updatedData = req.body;
+
+  // Leer archivo actual
+  fs.readFile(FILE_PATH, 'utf8', (err, data) => {
+    if (err) return res.status(500).json({ error: 'Error reading file' });
+
+    let partidos = JSON.parse(data);
+
+    // Buscar partido por id
+    const index = partidos.findIndex(p => p.id === id);
+    if (index === -1) {
+      return res.status(404).json({ error: 'Partido not found' });
+    }
+
+    // Reemplazar los datos del partido
+    partidos[index] = { ...partidos[index], ...updatedData };
+
+    // Guardar archivo actualizado
+    fs.writeFile(FILE_PATH, JSON.stringify(partidos, null, 2), err => {
+      if (err) return res.status(500).json({ error: 'Error saving file' });
+      res.json({ ok: true, message: 'Partido updated' });
+    });
+  });
+});
+
+app.delete('/partidos/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+
+  fs.readFile(FILE_PATH, 'utf8', (err, data) => {
+    if (err) return res.status(500).json({ error: 'No se pudo leer JSON' });
+
+    let partidos = [];
+    try {
+      partidos = JSON.parse(data);
+    } catch {
+      partidos = [];
+    }
+
+    const nuevos = partidos.filter(p => p.id !== id);
+
+    if (nuevos.length === partidos.length) {
+      return res.status(404).json({ error: 'Partido no encontrado' });
+    }
+
+    fs.writeFile(FILE_PATH, JSON.stringify(nuevos, null, 2), err => {
+      if (err) return res.status(500).json({ error: 'No se pudo guardar JSON' });
+      res.json({ ok: true, message: `Partido ${id} eliminado` });
+    });
   });
 });
 
