@@ -16,3 +16,5 @@ dist/
 build/
 partidos.json
 partidos_ed.json
+planteles_asistencia.json
+planteles.json
