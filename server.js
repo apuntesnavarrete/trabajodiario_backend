@@ -166,6 +166,39 @@ app.get('/pro/planteles.json', (req, res) => {
   res.sendFile(FILE_PLANTELES);
 });
 
+app.get('/pro/planteles/:torneoId', (req, res) => {
+  const torneoId = req.params.torneoId;
+  const filePath = path.join(__dirname, `planteles_${torneoId}.json`);
+
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ error: 'Archivo no encontrado' });
+  }
+
+  res.sendFile(filePath);
+});
+
+// ---- Subir y guardar planteles ----
+app.post('/pro/planteles/:torneoId', async (req, res) => {
+  try {
+    const torneoId = req.params.torneoId;
+    const data = req.body;
+
+    if (!torneoId) {
+      return res.status(400).json({ error: 'torneoId requerido' });
+    }
+
+    const fileName = `planteles_${torneoId}.json`;
+    const filePath = path.join(__dirname, fileName);
+
+    await fs.promises.writeFile(filePath, JSON.stringify(data, null, 2), 'utf8');
+
+    res.json({ ok: true, message: `Archivo ${fileName} guardado correctamente` });
+  } catch (err) {
+    console.error('Error al guardar planteles:', err);
+    res.status(500).json({ error: 'Error al guardar el archivo de planteles' });
+  }
+});
+
 
 
 // ---- Asistencias ----
