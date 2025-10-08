@@ -166,7 +166,7 @@ app.get('/pro/planteles.json', (req, res) => {
   res.sendFile(FILE_PLANTELES);
 });
 
-app.get('/pro/planteles/:torneoId', (req, res) => {
+app.get('/planteles/:torneoId', (req, res) => {
   const torneoId = req.params.torneoId;
   const filePath = path.join(__dirname, `planteles_${torneoId}.json`);
 
@@ -178,7 +178,7 @@ app.get('/pro/planteles/:torneoId', (req, res) => {
 });
 
 // ---- Subir y guardar planteles ----
-app.post('/pro/planteles/:torneoId', async (req, res) => {
+app.post('/planteles/:torneoId', async (req, res) => {
   try {
     const torneoId = req.params.torneoId;
     const data = req.body;
