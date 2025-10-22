@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 const BASE_PATH = path.resolve(__dirname, "../data"); // carpeta data relativa al proyecto
 
 // GET planteles generales
-router.get("/pro/planteles.json", (req, res) => {
+router.get("/", (req, res) => {
   const file = path.resolve(BASE_PATH, "planteles.json");
   res.sendFile(file, err => {
     if (err) res.status(500).json({ error: "No se pudo leer planteles.json" });
