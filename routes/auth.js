@@ -1,7 +1,7 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import { createToken , createRefreshToken , verifyRefreshToken} from "../config/jwt.js";
-import { users } from "./users.js";
+import { users } from "../data/users.js";
 
 const router = express.Router();
 

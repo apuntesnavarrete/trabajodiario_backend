@@ -1,7 +1,9 @@
 import jwt from "jsonwebtoken";
-
-const SECRET_KEY = "my_secret_key_123";
-const REFRESH_SECRET_KEY = "my_refresh_secret_123"; // 🔒 separate secret
+import dotenv from "dotenv";
+dotenv.config();
+//volverla una variable de entorno
+const SECRET_KEY = process.env.SECRET_KEY;
+const REFRESH_SECRET_KEY = process.env.REFRESH_SECRET_KEY;
 
 export function createToken(user) {
   return jwt.sign(
