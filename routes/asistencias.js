@@ -2,6 +2,7 @@ import express from "express";
 import { mergeData, keyByPlayer } from "../utils/mergeData.js";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
+import { checkAuth } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +18,7 @@ router.get("/", (req, res) => {
 });
 
 // POST asistencias
-router.post("/", async (req, res) => {
+router.post("/",checkAuth, async (req, res) => {
   try {
     const nuevas = Array.isArray(req.body) ? req.body : [req.body];
     const data = await mergeData(FILE_ASISTENCIA, nuevas, keyByPlayer);

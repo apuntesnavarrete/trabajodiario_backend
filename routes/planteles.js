@@ -2,6 +2,7 @@ import express from "express";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { checkAuth } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -28,7 +29,7 @@ router.get("/:torneoId", (req, res) => {
 });
 
 // POST para guardar planteles
-router.post("/:torneoId", async (req, res) => {
+router.post("/:torneoId",checkAuth, async (req, res) => {
   try {
     const torneoId = req.params.torneoId;
     const data = req.body;
