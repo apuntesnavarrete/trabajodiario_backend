@@ -2,6 +2,7 @@ import express from "express";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { checkAuth } from "../middleware/authMiddleware";
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ router.get("/", (req, res) => {
 });
 
 // POST nuevo partido
-router.post("/", (req, res) => {
+router.post("/", checkAuth, (req, res) => {
   const datos = Array.isArray(req.body) ? req.body : [req.body];
 
   fs.readFile(FILE_PATH, "utf8", (err, data) => {
@@ -46,7 +47,7 @@ router.post("/", (req, res) => {
 });
 
 // PUT actualizar partido
-router.put("/:id", (req, res) => {
+router.put("/:id",checkAuth, (req, res) => {
   const id = parseInt(req.params.id);
   const updatedData = req.body;
 
@@ -67,7 +68,7 @@ router.put("/:id", (req, res) => {
 });
 
 // DELETE partido
-router.delete("/:id", (req, res) => {
+router.delete("/:id",checkAuth, (req, res) => {
   const id = parseInt(req.params.id);
 
   fs.readFile(FILE_PATH, "utf8", (err, data) => {
