@@ -19,20 +19,41 @@ router.post("/login", async (req, res) => {
   const accessToken = createToken(user);
   const refreshToken = createRefreshToken(user);
 
-  res.json({ accessToken, refreshToken, role: user.role });
+
+   // 🍪 Cookie solo en modo desarrollo (sin HTTPS)
+  res.cookie("refreshToken", refreshToken, {
+    httpOnly: true,     // 🔒 protege del acceso JS
+    secure: false,      // ⚙️ permite HTTP
+    sameSite: "lax",    // 🧭 permite funcionar localmente
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 días
+  });
+
+ res.json({
+    accessToken,
+    role: user.role,
+  });});
+
+
+router.post("/refresh", (req, res) => {
+  const token = req.cookies.refreshToken;
+  if (!token) return res.status(401).json({ message: "No refresh token" });
+
+  try {
+    const payload = jwt.verify(token, process.env.REFRESH_SECRET);
+    const newAccess = createToken({ username: payload.username });
+    res.json({ accessToken: newAccess });
+  } catch {
+    res.status(403).json({ message: "Invalid refresh token" });
+  }
 });
 
-// refresh token endpoint
-router.post("/refresh", (req, res) => {
-  const { refreshToken } = req.body;
-  if (!refreshToken) return res.status(401).json({ message: "No token provided" });
-
-  const decoded = verifyRefreshToken(refreshToken);
-  if (!decoded) return res.status(403).json({ message: "Invalid refresh token" });
-
-  // create new access token
-  const newAccessToken = createToken(decoded);
-  res.json({ accessToken: newAccessToken });
+router.get("/check-cookie", (req, res) => {
+  const refresh = req.cookies?.refreshToken;
+  if (refresh) {
+    return res.json({ ok: true, hasRefresh: true });
+  } else {
+    return res.json({ ok: true, hasRefresh: false });
+  }
 });
 
 export default router;

@@ -8,11 +8,19 @@ export function checkAuth(req, res, next) {
     return res.status(401).json({ message: "No token provided" });
   }
 
-  const decoded = verifyToken(token);
-  if (!decoded) {
-    return res.status(403).json({ message: "Invalid or expired token" });
-  }
+  try {
+    const decoded = verifyToken(token);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    // ⚠️ Si el token expiró, jwt lanza un error con nombre 'TokenExpiredError'
+    if (err.name === "TokenExpiredError") {
+      console.log("⚠️ Token expirado");
+      return res.status(401).json({ message: "Token expired" });
+    }
 
-  req.user = decoded; // keep user data
-  next();
+    console.log("❌ Error al verificar token:", err.message);
+    return res.status(403).json({ message: "Invalid token" });
+  }
 }
+

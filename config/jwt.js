@@ -9,7 +9,7 @@ export function createToken(user) {
   return jwt.sign(
     { id: user.id, role: user.role },
     SECRET_KEY,
-    { expiresIn: "20m" }
+    { expiresIn: process.env.ACCESS_TOKEN_EXPIRES }
   );
 }
 
@@ -17,7 +17,7 @@ export function createRefreshToken(user) {
   return jwt.sign(
     { id: user.id, role: user.role },
     REFRESH_SECRET_KEY,
-    { expiresIn: "7d" } // refresh token lasts 7 days
+    { expiresIn: process.env.REFRESH_TOKEN_EXPIRES }
   );
 }
 

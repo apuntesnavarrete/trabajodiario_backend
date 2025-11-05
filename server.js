@@ -6,12 +6,16 @@ import partidosRoutes from "./routes/partidos.js";
 import plantelesRoutes from "./routes/planteles.js";
 import asistenciasRoutes from "./routes/asistencias.js";
 import authRoutes from "./routes/auth.js";
+import cookieParser from "cookie-parser";
+
 
 const app = express();
 app.use(express.json());
 app.use(cors);
 app.use(morganLogger);
 app.use(slowMonitor);
+app.use(cookieParser());
+
 
 // Rutas
 app.use("/auth", authRoutes);
