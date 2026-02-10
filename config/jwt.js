@@ -7,11 +7,16 @@ const REFRESH_SECRET_KEY = process.env.REFRESH_SECRET_KEY;
 
 export function createToken(user) {
   return jwt.sign(
-    { id: user.id, role: user.role },
+    {
+      id: user.id,
+      role: user.role,
+      tournamentIds: user.tournamentIds, // 👈 THIS was missing
+    },
     SECRET_KEY,
     { expiresIn: process.env.ACCESS_TOKEN_EXPIRES }
   );
 }
+
 
 export function createRefreshToken(user) {
   return jwt.sign(
