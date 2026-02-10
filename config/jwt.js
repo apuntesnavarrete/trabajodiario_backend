@@ -15,11 +15,12 @@ export function createToken(user) {
 
 export function createRefreshToken(user) {
   return jwt.sign(
-    { id: user.id, role: user.role },
+    { id: user.id },
     REFRESH_SECRET_KEY,
     { expiresIn: process.env.REFRESH_TOKEN_EXPIRES }
   );
 }
+
 
 export function verifyToken(token) {
   try { return jwt.verify(token, SECRET_KEY); } 
