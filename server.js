@@ -5,6 +5,8 @@ import slowMonitor from "./middleware/slowMonitor.js";
 import partidosRoutes from "./routes/partidos.js";
 import plantelesRoutes from "./routes/planteles.js";
 import asistenciasRoutes from "./routes/asistencias.js";
+import calendarioRoutes from "./routes/calendario.js";
+
 import authRoutes from "./routes/auth.js";
 import cookieParser from "cookie-parser";
 
@@ -22,6 +24,14 @@ app.use("/auth", authRoutes);
 app.use("/partidos", partidosRoutes);
 app.use("/planteles", plantelesRoutes);
 app.use("/asistencias", asistenciasRoutes);
+app.use("/calendario", calendarioRoutes);
+ app.use((req, res) => {
+  res.status(404).json({
+    error: "Not Found",
+    message: "La ruta no existe"
+  });
+});
+
 
 
 const PORT = 3004;
