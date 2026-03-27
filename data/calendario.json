@@ -10,7 +10,10 @@
       "homeTeam": "Argentina",
       "awayTeam": "Santos",
       "status": "finished",
-      "score": { "home": 2, "away": 1 }
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "id": 2,
@@ -22,7 +25,10 @@
       "homeTeam": "Napoli",
       "awayTeam": "Incógnito",
       "status": "finished",
-      "score": { "home": 1, "away": 3 }
+      "score": {
+        "home": 1,
+        "away": 3
+      }
     },
     {
       "id": 3,
@@ -34,7 +40,10 @@
       "homeTeam": "Juventus",
       "awayTeam": "Ohana",
       "status": "finished",
-      "score": { "home": 3, "away": 1 }
+      "score": {
+        "home": 3,
+        "away": 1
+      }
     },
     {
       "id": 4,
@@ -58,7 +67,10 @@
       "homeTeam": "Barcelona",
       "awayTeam": "Real Madrid",
       "status": "live",
-      "score": { "home": 1, "away": 1 }
+      "score": {
+        "home": 1,
+        "away": 1
+      }
     },
     {
       "id": 6,
@@ -107,6 +119,87 @@
       "awayTeam": "Rayadas",
       "status": "scheduled",
       "score": null
+    },
+    {
+      "date": "2026-03-26",
+      "time": "18:00",
+      "field": "Cancha 2",
+      "league": "Liga Mixta Sabatina",
+      "category": "Libre",
+      "homeTeam": "Barcelona",
+      "awayTeam": "Real Madrid",
+      "status": "live",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": 10
+    },
+    {
+      "date": "2026-03-26",
+      "time": "19:00",
+      "field": "Cancha 1",
+      "league": "Liga Mixta Sabatina",
+      "category": "Libre",
+      "homeTeam": "Chelsea",
+      "awayTeam": "Arsenal",
+      "status": "scheduled",
+      "score": null,
+      "id": 11
+    },
+    {
+      "date": "2026-03-26",
+      "time": "18:00",
+      "field": "Cancha 2",
+      "league": "Liga Mixta Sabatina",
+      "category": "Libre",
+      "homeTeam": "Barcelona",
+      "awayTeam": "Real Madrid",
+      "status": "live",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": 12
+    },
+    {
+      "date": "2026-03-26",
+      "time": "19:00",
+      "field": "Cancha 1",
+      "league": "Liga Mixta Sabatina",
+      "category": "Libre",
+      "homeTeam": "Chelsea",
+      "awayTeam": "Arsenal",
+      "status": "scheduled",
+      "score": null,
+      "id": 13
+    },
+    {
+      "date": "2026-03-26",
+      "time": "18:00",
+      "field": "Cancha 2",
+      "league": "Liga Mixta Sabatina",
+      "category": "Libre",
+      "homeTeam": "Barcelona",
+      "awayTeam": "Real Madrid",
+      "status": "live",
+      "score": {
+        "home": 1,
+        "away": 1
+      },
+      "id": 14
+    },
+    {
+      "date": "2026-03-26",
+      "time": "19:00",
+      "field": "Cancha 1",
+      "league": "Liga Mixta Sabatina",
+      "category": "Libre",
+      "homeTeam": "Chelsea",
+      "awayTeam": "Arsenal",
+      "status": "scheduled",
+      "score": null,
+      "id": 15
     }
   ]
 }
