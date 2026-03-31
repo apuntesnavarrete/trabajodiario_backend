@@ -1,4 +1,5 @@
 import express from "express";
+import 'dotenv/config';
 import cors from "./config/cors.js";
 import morganLogger from "./config/morgan.js";
 import slowMonitor from "./middleware/slowMonitor.js";

@@ -2,7 +2,7 @@ import cors from "cors";
 const frontendProd = process.env.FRONTEND_URL; 
 
 const allowedOrigins = [
-  frontendProd,
+  "https://admin.impactounder.com", // 👈 Escríbelo manual para probar
   "http://localhost:5174"
 ];
 
